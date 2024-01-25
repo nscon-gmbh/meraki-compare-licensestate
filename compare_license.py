@@ -79,7 +79,7 @@ class _Csv:
         # current date
         time = datetime.now().strftime("%Y_%m_%d")
         # new header
-        head = str("product;" + ref_date + "; " + time + "; diference; ")
+        head = str("product;" + ref_date + "; " + time + "; difference; ")
         # write new header to file
         final_csv = open(final_csv_name, "w")
         final_csv.write(head)
