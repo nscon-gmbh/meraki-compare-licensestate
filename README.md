@@ -36,14 +36,14 @@ pip install -r requirements.txt
 Please enter the following information into the file .env in the local directory.
 
 ```
-APIKEY=\<your Meraki API Key\>
-ORGID=\<Meraki Org ID for which you want to capture the data\>
-CLIENTID=\<MS Graph ClientID\>
-CLIENTSECRET=\<MS Graph ClientSecret\>
-TENANTID=\<MS Graph TenantID\>
-FROM=\<mail sender, you need to have the necessary rights to send a mail from this mail address\>
-TO=\<mail receiver - for multiple receiver seperate the strings with a , -\> receiver@1.com,receiver@2.com\>
-CC=\<mail CC - for multiple receiver seperate the strings with a , -\> receiver@1.com,receiver@2.com\>
+APIKEY=<your Meraki API Key>
+ORGID=<Meraki Org ID for which you want to capture the data>
+CLIENTID=<MS Graph ClientID>
+CLIENTSECRET=<MS Graph ClientSecret>
+TENANTID=<MS Graph TenantID>
+FROM=<mail sender, you need to have the necessary rights to send a mail from this mail address>
+TO=<mail receiver - for multiple receiver seperate the strings with a , -> receiver@1.com,receiver@2.com>
+CC=<mail CC - for multiple receiver seperate the strings with a , -> cc@1.com,cc@2.com>
 ```
 ## Usage
 
