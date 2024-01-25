@@ -32,7 +32,7 @@ def main():
     month = date.strftime("%B")
 
     # instantiate new mail object
-    mail = _Mail
+    mail = _Mail()
     mail.authenticate()
     # create header dict
     header = {}
