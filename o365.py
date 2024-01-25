@@ -1,4 +1,4 @@
-""" script to send a E-Mail via Microsoft Graph API"""
+""" script to send an E-Mail via Microsoft Graph API"""
 
 from O365 import Account
 from decouple import config
