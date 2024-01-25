@@ -2,8 +2,8 @@
 to pull current list of active devices via Meraki API and compares it to
 the latest information"""
 
-from compare_license import _meraki, _csv
-from o365 import _mail
+from compare_license import _Meraki, _Csv
+from o365 import _Mail
 from decouple import config
 import datetime as dt
 
@@ -15,14 +15,14 @@ def main():
     # list of all producttype you wish to capture the licenses for
     list_producttype = ["wireless", "switch", "appliance", "cellularGateway"]
     # create new _meraki object for API access
-    dashboard = _meraki()
+    dashboard = _Meraki()
     # capture licensed devices for all producttypes in list_producttype
     for producttype in list_producttype:
         diff_all.update(
             **dashboard._get_count_devices(dashboard._get_devices(producttype))
         )
     # create new _csv object
-    delta_csv = _csv()
+    delta_csv = _Csv()
     # write license information to new csv
     delta_csv.write_csv_serial(diff_all)
     # read in last created csv with license information for comparison
@@ -32,7 +32,7 @@ def main():
     month = date.strftime("%B")
 
     # instantiate new mail object
-    mail = _mail
+    mail = _Mail
     mail.authenticate()
     # create header dict
     header = {}

@@ -9,7 +9,7 @@ from datetime import datetime
 from decouple import config
 
 
-class _meraki:
+class _Meraki:
     def __init__(self):
         """create new dashboard api connection"""
         # get api key and orgid from .env
@@ -36,7 +36,7 @@ class _meraki:
         return dict_count_model
 
 
-class _csv:
+class _Csv:
     def write_csv_serial(self, data):
         """create new csv with provided license data"""
         self.data = data

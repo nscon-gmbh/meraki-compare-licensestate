@@ -4,7 +4,7 @@ from O365 import Account
 from decouple import config
 
 
-class _mail:
+class _Mail:
     def authenticate(self):
         """authentication with GRAPH API"""
         client_id = config("CLIENTID")
