@@ -33,7 +33,7 @@ class _Meraki:
         list_models = []
         for device in devices:
             list_models.append(device["model"])
-        dict_count_model = {i: list_mo.dels.count(i) for i in list_models}
+        dict_count_model = {i: list_models.count(i) for i in list_models}
         return dict_count_model
 
 
