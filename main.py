@@ -17,10 +17,9 @@ def main():
     # create new _meraki object for API access
     dashboard = _Meraki()
     # capture licensed devices for all producttypes in list_producttype
-    for producttype in list_producttype:
-        diff_all.update(
-            **dashboard._get_count_devices(dashboard._get_devices(producttype))
-        )
+    diff_all.update(
+        **dashboard._get_count_devices(dashboard.get_devices(list_producttype))
+    )
     # create new _csv object
     delta_csv = _Csv()
     # write license information to new csv

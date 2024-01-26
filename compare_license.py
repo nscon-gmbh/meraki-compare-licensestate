@@ -22,10 +22,10 @@ class _Meraki:
         # initiate dashboard api connection
         self.dashboard = meraki.DashboardAPI(api_key, log_path="./logs/")
 
-    def _get_devices(self, producttype: str):
-        """receive all devices based on producttype"""
+    def get_devices(self, product_types: list[str]):
+        """receive all devices based on product types"""
         return self.dashboard.organizations.getOrganizationDevicesStatuses(
-            self.org_id, total_pages="all", productTypes=producttype
+            self.org_id, total_pages="all", productTypes=product_types
         )
 
     def _get_count_devices(self, devices):
