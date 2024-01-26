@@ -1,5 +1,6 @@
 """ in this script are the classes for Meraki API communication
 and for creation of csv files with compare functions"""
+
 import meraki
 import csv
 import glob
