@@ -255,3 +255,4 @@ fabric.properties
 .idea/httpRequests
 
 o365_token.txt
+*.csv
