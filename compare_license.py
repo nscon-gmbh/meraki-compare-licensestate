@@ -65,8 +65,13 @@ class _Csv:
                 )
                 reference_csv_list = list(csv2dict)
                 self.reference_csv = reference_csv_list[0]
-        except Exception as e:
-            print(e)
+        except IndexError:
+            with open("reference.csv") as csv_file:
+                csv2dict = csv.DictReader(
+                    csv_file, delimiter=",", skipinitialspace=True
+                )
+                reference_csv_list = list(csv2dict)
+                self.reference_csv = reference_csv_list[0]
 
     def write_csv_delta(self):
         """compare old and new license state and write delta to new file"""
@@ -74,9 +79,14 @@ class _Csv:
         list_of_changes = diffincsv["type_changes"]
         final_csv_name = self.date + "comparedlicenses.csv"
         # get first line of reference csv for temporary header
-        csv_header_temp = self.csv_files[1]
+        csv_header_temp = self.reference_csv
         # get date from ref data
-        ref_date = csv_header_temp.split("-")[0]
+        try:
+            ref_date = csv_header_temp.split("-")[0]
+        except IndexError:
+            ref_date = datetime.now().strftime("%Y_%m_%d")
+        except AttributeError:
+            ref_date = datetime.now().strftime("%Y_%m_%d")
         # current date
         time = datetime.now().strftime("%Y_%m_%d")
         # new header
