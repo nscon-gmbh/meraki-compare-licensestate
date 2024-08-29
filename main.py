@@ -8,12 +8,6 @@ from compare_license import _Meraki, _Csv
 from o365 import _Mail
 
 
-def main_coterm():
-    """main function"""
-    dashboard = _Meraki()
-    dashboard.get_coterm_licenses()
-
-
 def main():
     """this is the main function"""
     # create new dict for result
