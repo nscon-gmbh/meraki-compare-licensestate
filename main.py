@@ -8,6 +8,12 @@ from decouple import config
 import datetime as dt
 
 
+def main_coterm():
+    """main function"""
+    dashboard = _Meraki()
+    dashboard.get_coterm_licenses()
+
+
 def main():
     """this is the main function"""
     # create new dict for result
