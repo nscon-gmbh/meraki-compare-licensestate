@@ -48,10 +48,7 @@ class _Meraki:
                 )
                 if device["serial"] == hotspare["spareSerial"]:
                     print(
-                        device["serial"]
-                        + "is hot spare "
-                        + hotspare["spareSerial"]
-                        + " - skipping"
+                        f"{device['serial']} is hot spare {hotspare['spareSerial']} - skipping"
                     )
                     skipped_counter += 1
                     continue
