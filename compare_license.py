@@ -28,6 +28,13 @@ class _Meraki:
             self.org_id, total_pages="all", productTypes=product_types
         )
 
+    def get_coterm_licenses(self):
+        """get coterm licsenses from api"""
+        coterm_licenses = self.dashboard.organizations.getOrganizationLicensesOverview(
+            organizationId=self.org_id
+        )
+        print(coterm_licenses)
+
     def _get_count_devices(self, devices):
         """create list with all models of producttype"""
         list_models = []
@@ -78,11 +85,9 @@ class _Csv:
         diffincsv = DeepDiff(self.reference_csv, self.data)
         list_of_changes = diffincsv["type_changes"]
         final_csv_name = self.date + "comparedlicenses.csv"
-        # get first line of reference csv for temporary header
-        csv_header_temp = self.reference_csv
         # get date from ref data
         try:
-            ref_date = csv_header_temp.split("-")[0]
+            ref_date = self.csv_files[1].split("-")[0]
         except IndexError:
             ref_date = datetime.now().strftime("%Y_%m_%d")
         except AttributeError:
