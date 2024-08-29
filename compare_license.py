@@ -1,6 +1,8 @@
 """ in this script are the classes for Meraki API communication
 and for creation of csv files with compare functions"""
 
+# Get Network Appliance Warm Spare for mx
+
 import meraki
 import csv
 import glob
@@ -35,12 +37,24 @@ class _Meraki:
         )
         print(coterm_licenses)
 
-    def _get_count_devices(self, devices):
+    def get_count_devices(self, devices):
         """create list with all models of producttype"""
         list_models = []
+        skipped_counter = 0
         for device in devices:
+            if device["productType"] == "appliance":
+                hotspare = self.dashboard.appliance.getNetworkApplianceWarmSpare(
+                    device["networkId"]
+                )
+                if device["serial"] == hotspare["spareSerial"]:
+                    print(
+                        f"{device['serial']} is hot spare {hotspare['spareSerial']} - skipping"
+                    )
+                    skipped_counter += 1
+                    continue
             list_models.append(device["model"])
         dict_count_model = {i: list_models.count(i) for i in list_models}
+        print(f"Hot Spare MX skipped: {skipped_counter}")
         return dict_count_model
 
 

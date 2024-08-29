@@ -2,10 +2,16 @@
 to pull current list of active devices via Meraki API and compares it to
 the latest information"""
 
+import datetime as dt
+from decouple import config
 from compare_license import _Meraki, _Csv
 from o365 import _Mail
-from decouple import config
-import datetime as dt
+
+
+def main_coterm():
+    """main function"""
+    dashboard = _Meraki()
+    dashboard.get_coterm_licenses()
 
 
 def main():
@@ -18,7 +24,7 @@ def main():
     dashboard = _Meraki()
     # capture licensed devices for all producttypes in list_producttype
     diff_all.update(
-        **dashboard._get_count_devices(dashboard.get_devices(list_producttype))
+        **dashboard.get_count_devices(dashboard.get_devices(list_producttype))
     )
     # create new _csv object
     delta_csv = _Csv()
