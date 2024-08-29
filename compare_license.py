@@ -54,7 +54,7 @@ class _Meraki:
                     continue
             list_models.append(device["model"])
         dict_count_model = {i: list_models.count(i) for i in list_models}
-        print(f"Hot Spare MX skipped: {str(skipped_counter)}")
+        print(f"Hot Spare MX skipped: {skipped_counter}")
         return dict_count_model
 
 
